@@ -15,7 +15,9 @@ namespace Zad1
 
         public static ThreadSingleton Instance
         {
-            get { _instances = _instances ?? new Dictionary<int, ThreadSingleton>();
+            get 
+            { 
+                _instances = _instances ?? new Dictionary<int, ThreadSingleton>();
                 var threadKey = Thread.CurrentThread.GetHashCode();
                 ThreadSingleton ts;
                 if (_instances.TryGetValue(threadKey, out ts))
