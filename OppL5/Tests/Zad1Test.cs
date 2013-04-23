@@ -12,6 +12,12 @@ namespace Tests
     [TestClass]
     public class Zad1Test
     {
+        #region Constants
+
+        private const string FROM = "wieslav.dev@gmail.com";
+        private const string TO = "solarplexus6@gmail.com";
+
+        #endregion
         #region Private fields
 
         private static SimpleSmtpServer _server;
@@ -35,9 +41,6 @@ namespace Tests
             _server.ClearReceivedEmail();
         }
 
-        const string FROM = "wieslav.dev@gmail.com";
-        const string TO = "solarplexus6@gmail.com";
-
         [TestMethod]
         public void TestSendWithAttachment()
         {
@@ -45,7 +48,7 @@ namespace Tests
             const string BODY = "attachment test body";
             const string ATTACHMENT_CONTENT = "test att content";
 
-            var smtpFacade = new SmtpFacade();            
+            var smtpFacade = new SmtpFacade();
 
             using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(ATTACHMENT_CONTENT)))
             {
@@ -63,7 +66,7 @@ namespace Tests
             const string SUBJECT = "smtp facade test";
             const string BODY = "test body";
 
-            var smtpFacade = new SmtpFacade();            
+            var smtpFacade = new SmtpFacade();
             smtpFacade.Send(FROM, TO, SUBJECT, BODY);
 
             var received = _server.ReceivedEmail.Single();

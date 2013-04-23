@@ -2,18 +2,20 @@
 using System.IO;
 using System.Net.Mail;
 using System.Net.Mime;
-using System.Threading.Tasks;
 
 namespace Zad1
 {
-    public class SmtpFacade
+    public class SmtpFacade : ISmtpFacade
     {
+        #region Constants
+
         private const string ATTACHMENT_NAME = "attachment";
 
+        #endregion
         #region Public methods
 
         public void Send(string @from, string to, string subject, string body, Stream stream = null,
-                               string attachmentMimeType = null)
+                         string attachmentMimeType = null)
         {
             using (var client = new SmtpClient())
             {
@@ -29,7 +31,7 @@ namespace Zad1
                     }
 
                     //message
-                    var mailMessage = new MailMessage(@from, to, subject, body);                                        
+                    var mailMessage = new MailMessage(@from, to, subject, body);
 
                     //attachment
                     var attachment = new Attachment(stream, new ContentType(attachmentMimeType));

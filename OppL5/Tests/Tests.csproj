@@ -35,10 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="mscorlib.4.0.0.0.Fakes">
+      <HintPath>FakesAssemblies\mscorlib.4.0.0.0.Fakes.dll</HintPath>
+    </Reference>
     <Reference Include="netDumbster">
       <HintPath>..\packages\netDumbster.1.3.0.5\lib\netDumbster.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.4.0.0.0.Fakes">
+      <HintPath>FakesAssemblies\System.4.0.0.0.Fakes.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -53,16 +60,33 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Zad4Test.cs" />
+    <Compile Include="Zad2Test.cs" />
     <Compile Include="Zad1Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Zad3Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zad1\Zad1.csproj">
       <Project>{B61A1648-BF7A-4C29-962A-72E2D48FB6D5}</Project>
       <Name>Zad1</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Zad2\Zad2.csproj">
+      <Project>{CE7FD93E-585B-42EF-BBD8-024C0B17F7EE}</Project>
+      <Name>Zad2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zad3\Zad3.csproj">
+      <Project>{550524F5-AE74-4F2A-BC6D-B6191D7D48F8}</Project>
+      <Name>Zad3</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zad4\Zad4.csproj">
+      <Project>{122AA2BC-1B1F-47B8-94C6-C52AC077C1CF}</Project>
+      <Name>Zad4</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Fakes Include="Fakes\System.fakes" />
+    <Fakes Include="Fakes\mscorlib.fakes" />
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>
