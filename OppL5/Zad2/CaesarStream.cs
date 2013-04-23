@@ -59,7 +59,7 @@ namespace Zad2
         private byte EncodeByte(byte b)
         {
             var encoded = (b + _shift) % (byte.MaxValue + 1);
-            return (byte)(encoded >= 0 ? encoded : encoded);
+            return (byte)encoded;
         }
 
         public override bool CanRead

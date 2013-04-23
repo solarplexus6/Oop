@@ -6,6 +6,8 @@ using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Zad1;
 using netDumbster.smtp;
+using System.Net.Configuration;
+using System.Configuration;
 
 namespace Tests
 {
@@ -28,8 +30,21 @@ namespace Tests
         [ClassInitialize]
         public static void InitTests(TestContext context)
         {
-            const int PORT = 2773;
-            _server = SimpleSmtpServer.Start(PORT);
+            const int DEFAULT_PORT = 2773;
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            MailSettingsSectionGroup mailSettings = config.GetSectionGroup("system.net/mailSettings") 
+                as MailSettingsSectionGroup;
+
+            int port;
+            if (mailSettings != null)
+            {
+                port = mailSettings.Smtp.Network.Port;
+            }
+            else
+            {
+                port = DEFAULT_PORT; 
+            }
+            _server = SimpleSmtpServer.Start(port);
         }
 
         #endregion
