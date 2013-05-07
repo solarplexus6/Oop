@@ -50,6 +50,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Zad3Test.cs" />
+    <Compile Include="Zad2Test.cs" />
     <Compile Include="Zad1Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,6 +59,14 @@
     <ProjectReference Include="..\Zad1\Zad1.csproj">
       <Project>{2C410DF6-FF0C-45BB-9EE7-AB049F201F67}</Project>
       <Name>Zad1</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zad2\Zad2.csproj">
+      <Project>{9898b644-e7a5-4061-811c-8ebc60cdf510}</Project>
+      <Name>Zad2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Zad3\Zad3.csproj">
+      <Project>{77BA0795-94A2-40AF-B7DF-58BB031B6B82}</Project>
+      <Name>Zad3</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
