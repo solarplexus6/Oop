@@ -166,6 +166,7 @@ namespace Zad2
                         SelectedUser.LastName = EditUser.LastName;
                         SelectedUser.Address = EditUser.Address;
                         SelectedUser.BirthDate = EditUser.BirthDate;
+                        SelectedUser.Type = EditUser.Type;
                         selected = SelectedUser;
                     }
 

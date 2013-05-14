@@ -79,8 +79,8 @@
                 </StackPanel>                
             </Grid>            
         </Border>
-        
-        <Popup x:Name="EditPopup" >
+
+        <Popup x:Name="EditPopup" Placement="Center" PopupAnimation="Fade">
             <Border BorderThickness="1" Background="White">
                 <StackPanel VerticalAlignment="Center" >
                     <TextBlock Text="Nazwisko"/>
@@ -94,7 +94,7 @@
                     <TextBlock Text="Grupa"/>
                     <ComboBox SelectedItem="{Binding EditUser.Type, Mode=TwoWay}" ItemsSource="{Binding UserTypes}"/>                                           
                     <Button x:Name="PopupOkBtn" Content="Ok" Click="PopupOkBtn_OnClick"/>
-                    <Button x:Name="PopupCancelBtn" Content="Cancel" Click="PopupCancelBtn_OnClick"/>
+                    <Button x:Name="PopupCancelBtn" Content="Anuluj" Click="PopupCancelBtn_OnClick"/>
                 </StackPanel>
             </Border>
         </Popup>
