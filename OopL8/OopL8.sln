@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zad1", "Zad1\Zad1.csproj", "{07BE8055-5D65-42EC-B9BE-D2288D0C0F1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{C8B00803-3C24-402D-98F0-9A4B09F036DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07BE8055-5D65-42EC-B9BE-D2288D0C0F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07BE8055-5D65-42EC-B9BE-D2288D0C0F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07BE8055-5D65-42EC-B9BE-D2288D0C0F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07BE8055-5D65-42EC-B9BE-D2288D0C0F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8B00803-3C24-402D-98F0-9A4B09F036DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8B00803-3C24-402D-98F0-9A4B09F036DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8B00803-3C24-402D-98F0-9A4B09F036DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8B00803-3C24-402D-98F0-9A4B09F036DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
