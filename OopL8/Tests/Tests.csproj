@@ -56,6 +56,7 @@
     <Compile Include="Zad2Tests.cs" />
     <Compile Include="Zad1Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Zad3Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zad1\Zad1.csproj">
@@ -66,9 +67,20 @@
       <Project>{AD632B24-9315-446E-9CA4-B2F48D8AF4A9}</Project>
       <Name>Zad2</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Zad3\Zad3.csproj">
+      <Project>{185B5FC4-DA0A-43E1-89B7-DE97803BFB00}</Project>
+      <Name>Zad3</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cd_catalog.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

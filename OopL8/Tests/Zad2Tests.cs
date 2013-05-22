@@ -11,9 +11,17 @@ namespace Tests
         [TestMethod]
         public void TestDb()
         {
-            var handler = new DbDataAccessHandler();
+            DataAccessHandler handler = new DbDataAccessHandler();
             handler.Execute();
-            Assert.AreEqual(handler.Result, 60);
+            Assert.AreEqual(((DbDataAccessHandler)handler).Result, 60);
+        }
+
+        [TestMethod]
+        public void TestXml()
+        {
+            DataAccessHandler handler = new XmlDataAccessHandler("cd_catalog.xml");
+            handler.Execute();
+            Assert.AreEqual(((XmlDataAccessHandler)handler).Result, "CATALOG");
         }
 
         #endregion
