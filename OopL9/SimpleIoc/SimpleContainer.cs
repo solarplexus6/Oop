@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using SimpleIoc.Exceptions;
 
 namespace SimpleIoc
 {
@@ -8,7 +10,8 @@ namespace SimpleIoc
     {
         #region Private fields
 
-        private readonly IList<RegisteredObject> _registeredObjects = new List<RegisteredObject>();
+        private readonly IDictionary<Type, RegisteredObject> _registeredObjects =
+            new Dictionary<Type, RegisteredObject>();
 
         #endregion
         #region Private methods
@@ -18,23 +21,44 @@ namespace SimpleIoc
             if (registeredObject.Instance == null ||
                 registeredObject.LifeCycle == LifeCycle.Transient)
             {
-                var parameters = ResolveConstructorParameters(registeredObject);
+                var constructorInfo = ResolveConstructor(registeredObject);
+                var parameters = ResolveConstructorParameters(constructorInfo);
                 registeredObject.CreateInstance(parameters.ToArray());
             }
             return registeredObject.Instance;
         }
 
-        private IEnumerable<object> ResolveConstructorParameters(RegisteredObject registeredObject)
+        private ConstructorInfo ResolveConstructor(RegisteredObject registeredObject)
         {
-            var constructorInfo = registeredObject.ConcreteType.GetConstructors().First();
+            var constructors = registeredObject.GetType().GetConstructors();
+            //with DependencyConstructor attribute
+            var dependencyConstructor =
+                constructors.FirstOrDefault(
+                    ci => ci.GetCustomAttribute<DependencyConstructorAttribute>() != null);
+            if (dependencyConstructor != null)
+            {
+                return dependencyConstructor;
+            }
+
+            var defaultContructor = constructors.OrderBy(ci => ci.GetParameters().Count()).FirstOrDefault();
+            if (defaultContructor == null)
+            {
+                throw new MissingMethodException();
+            }
+            return defaultContructor;
+        }
+
+        private IEnumerable<object> ResolveConstructorParameters(ConstructorInfo constructorInfo)
+        {            
             return constructorInfo.GetParameters()
                                   .Select(parameter => ResolveObject(parameter.ParameterType));
         }
 
         private object ResolveObject(Type typeToResolve)
         {
-            var registeredObject = _registeredObjects.FirstOrDefault(o => o.TypeToResolve == typeToResolve);
-            if (registeredObject == null)
+            RegisteredObject registeredObject = null;
+
+            if (!_registeredObjects.TryGetValue(typeToResolve, out registeredObject))
             {
                 throw new TypeNotRegisteredException(string.Format(
                     "The type {0} has not been registered.", typeToResolve.Name));
@@ -52,13 +76,23 @@ namespace SimpleIoc
 
         public void RegisterType<TFrom, TTo>(bool singleton = true) where TTo : TFrom
         {
-            _registeredObjects.Add(new RegisteredObject(typeof (TFrom), typeof (TTo),
-                                                        singleton ? LifeCycle.Singleton : LifeCycle.Transient));
+            _registeredObjects[typeof (TFrom)] = new RegisteredObject(typeof (TFrom), typeof (TTo),
+                                                                      singleton
+                                                                          ? LifeCycle.Singleton
+                                                                          : LifeCycle.Transient);            
         }
 
         public T Resolve<T>()            
         {
             return (T) ResolveObject(typeof (T));
+        }
+
+        public void RegisterInstance<T>(T instance)
+        {
+            _registeredObjects[typeof (T)] = new RegisteredObject(typeof (T), instance.GetType(), LifeCycle.Singleton)
+                {
+                    Instance = instance
+                };
         }
 
         #endregion

@@ -8,7 +8,7 @@ namespace SimpleIoc
 
         public Type ConcreteType { get; private set; }
 
-        public object Instance { get; private set; }
+        public object Instance { get; set; }
 
         public LifeCycle LifeCycle { get; private set; }
         public Type TypeToResolve { get; private set; }

@@ -8,6 +8,8 @@
         void RegisterType<TFrom, TTo>(bool singleton) where TTo : TFrom;
         T Resolve<T>();
 
+        void RegisterInstance<T>(T Instance);
+
         #endregion
     }
 }

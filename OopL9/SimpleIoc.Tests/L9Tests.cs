@@ -1,10 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SimpleIoc.Exceptions;
+using SimpleIoc.Tests.Types;
 
 namespace SimpleIoc.Tests
 {
     [TestClass]
-    public class UnitTests
+    public class L9Tests
     {
         [TestMethod]
         public void ResolveObjectWithInterface()
@@ -85,23 +86,6 @@ namespace SimpleIoc.Tests
             Assert.IsInstanceOfType(instance, typeof(ConcreteTypeWithConstructorParams));
         }
 
-        public interface ITypeToResolve
-        {
-        }
-
-        public class ConcreteType : ITypeToResolve
-        {
-        }
-
-        public interface ITypeToResolveWithConstructorParams
-        {
-        }
-
-        public class ConcreteTypeWithConstructorParams : ITypeToResolveWithConstructorParams
-        {
-            public ConcreteTypeWithConstructorParams(ITypeToResolve typeToResolve)
-            {
-            }
-        }
+        
     }
 }

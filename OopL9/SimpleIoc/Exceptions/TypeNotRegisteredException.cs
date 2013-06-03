@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SimpleIoc
+namespace SimpleIoc.Exceptions
 {
     public class TypeNotRegisteredException : Exception
     {

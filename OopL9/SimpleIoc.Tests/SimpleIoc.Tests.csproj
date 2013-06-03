@@ -50,8 +50,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTests.cs" />
+    <Compile Include="Types\ConcreteType.cs" />
+    <Compile Include="Types\ConcreteTypeWithConstructorParams.cs" />
+    <Compile Include="Types\ConcreteTypeWithDependencyConstructorAttr.cs" />
+    <Compile Include="Types\ITypeToResolve.cs" />
+    <Compile Include="Types\ITypeToResolveWithConstructorParams.cs" />
+    <Compile Include="L9Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="L10Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SimpleIoc\SimpleIoc.csproj">
