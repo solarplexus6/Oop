@@ -50,9 +50,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Types\ConcreteWithCyclicDependency.cs" />
+    <Compile Include="Types\ConcreteWithSimpleCyclicDependency.cs" />
+    <Compile Include="Types\ConcreteWithResolvableSecondConstructor.cs" />
     <Compile Include="Types\ConcreteType.cs" />
     <Compile Include="Types\ConcreteTypeWithConstructorParams.cs" />
     <Compile Include="Types\ConcreteTypeWithDependencyConstructorAttr.cs" />
+    <Compile Include="Types\ConcreteWithStringParam.cs" />
     <Compile Include="Types\ITypeToResolve.cs" />
     <Compile Include="Types\ITypeToResolveWithConstructorParams.cs" />
     <Compile Include="L9Tests.cs" />

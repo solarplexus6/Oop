@@ -20,6 +20,16 @@ namespace SimpleIoc.Tests
         }
 
         [TestMethod]
+        public void ResolveConcreteTypeDefault()
+        {
+            var container = new SimpleContainer();            
+            var instance = container.Resolve<ConcreteType>();
+
+            Assert.IsNotNull(instance);
+            Assert.AreNotSame(container.Resolve<ConcreteType>(), instance);
+        }
+
+        [TestMethod]
         public void ResolveConcreteTypeSingleton()
         {
             var container = new SimpleContainer();
@@ -28,7 +38,7 @@ namespace SimpleIoc.Tests
             var instance = container.Resolve<ConcreteType>();
 
             Assert.AreSame(container.Resolve<ConcreteType>(), instance);
-        }
+        }        
 
         [TestMethod]
         public void ResolveConcreteTypeTransient()

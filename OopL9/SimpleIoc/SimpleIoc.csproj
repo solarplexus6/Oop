@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DependencyConstructorAttribute.cs" />
+    <Compile Include="Exceptions\CyclicDependencyException.cs" />
     <Compile Include="IContainer.cs" />
     <Compile Include="LifeCycle.cs" />
     <Compile Include="RegisteredObject.cs" />
